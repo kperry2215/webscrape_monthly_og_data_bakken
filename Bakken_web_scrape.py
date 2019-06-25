@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime
 import os
 
-def pull_desired_files_and_store_as_csvs(dates):
+def pull_desired_files_and_create_master_df(dates):
     """
     This function web scrapes the target website, pulls all of the xlsx files based on the selected dates using the xlrd function,
     converts to csv files, and reads in all csv's into a master pandas dataframe that will be used for all subsequent calculations.
@@ -63,7 +63,7 @@ def main():
            '2018_01', '2018_02', '2018_03', '2018_04', '2018_05', '2018_06', 
            '2018_07', '2018_08', '2018_09', '2018_10', '2018_11', '2018_12', '2019_01']
     #Run through the web scraper and save the desired csv files. Create a master dataframe with all of the months' data
-    master_dataframe_production=pull_desired_files_and_store_as_csvs(dates)
+    master_dataframe_production=pull_desired_files_and_create_master_df(dates)
     #Declare the ReportDate column as a pandas datetime object
     master_dataframe_production['ReportDate']=pd.to_datetime(master_dataframe_production['ReportDate'])
     #Write the master dataframe to a master csv 
